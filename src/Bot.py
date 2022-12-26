@@ -8,6 +8,7 @@ from commands.basic_commands import alive
 from commands.image_commands import blur
 from commands.dev_commands import test_getImage
 from commands.help_command import help_command_creator, help_command
+from utils.deleteImage import deleteImageCoroutine
 
 # loading envs
 load_dotenv()
@@ -27,12 +28,15 @@ image_commands = [blur]
 dev_commands = [test_getImage]
 
 
-all_commands = [CommandHandler(i.__name__, i) for i in [*basic_commands, *image_commands]]
+user_commands = [CommandHandler(i.__name__, i) for i in [*basic_commands, *image_commands]]
 
 # setting up help command
 help_command_creator(basic_commands, image_commands, dev_commands)
 
 # adding to bot
 Bot.add_handler(CommandHandler("help", help_command))
-Bot.add_handlers(all_commands)
+Bot.add_handlers(user_commands)
 Bot.add_handlers([CommandHandler(i.__name__, i, filters=Chat(chat_id=DEVS)) for i in dev_commands])
+
+# Job queues
+Bot.job_queue.run_repeating(deleteImageCoroutine, 120)
