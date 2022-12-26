@@ -1,6 +1,6 @@
 import uuid
 from os import path
-from telegram import Update, PhotoSize, File
+from telegram import Update, PhotoSize, File, User
 from constants.VALUES import PHOTO_SIZE, USER_GIVEN_IMAGES_DIR
 
 
@@ -12,7 +12,7 @@ async def getImageObject(update: Update) -> PhotoSize | None:
             return photo[PHOTO_SIZE]
 
         photo = await update.message.reply_to_message.from_user.get_profile_photos()
-        if photo.total_count > 0:
+        if photo != None and photo.total_count > 0:
             return photo.photos[0][PHOTO_SIZE]
 
     # if message contains username
@@ -28,9 +28,11 @@ async def getImageObject(update: Update) -> PhotoSize | None:
     #             _mentioned_username = update.message.text[_each_entity.offset:][:_each_entity.length]
 
     # tries to get user's avatar as a last resort
-    photo = await update.effective_user.get_profile_photos()
-    if photo.total_count > 0:
-        return photo.photos[0][PHOTO_SIZE]
+    _effective_user = update.effective_user
+    if isinstance(_effective_user, User):
+        photo = await _effective_user.get_profile_photos()
+        if photo != None and photo.total_count > 0:
+            return photo.photos[0][PHOTO_SIZE]
 
     return None
 
