@@ -7,19 +7,20 @@ BASIC_HELP = ''
 
 
 async def help_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    _user_text = update.message.text
-    _user_text_list = _user_text.split(' ')
+    _search_term = 'None'
+    if ctx.args and len(ctx.args) > 0:
+        _search_term = ctx.args[0]
     _help_message = BASIC_HELP
 
-    if len(_user_text_list) > 1:
-        _search_term = _user_text_list[1]
-        try:
-            _current_command_help = ALL_HELP_REPLIES[_search_term.upper()]
-            _help_message = f"<b>{_current_command_help['NAME']}</b>\n"
-            _help_message += f"{_current_command_help['DESCRIPTION']}"
+    try:
+        _current_command_help = ALL_HELP_REPLIES[_search_term.upper()]
+        _help_message = f"<b>{_current_command_help['NAME']}</b>\n"
+        _help_message += f"{_current_command_help['DESCRIPTION']}"
 
-        except:
+    except:
+        if _search_term != 'None':
             _help_message = "That command does not exist."
+
     await update.message.reply_text(_help_message, parse_mode='html')
 
 
@@ -34,26 +35,26 @@ def help_command_creator(_basic_commands: list, _image_commands: list, _dev_comm
 
     BASIC_HELP += "<b>Basic Commands</b>\n"
     for _each_command in _basic_commands:
-        BASIC_HELP += f"/{_each_command.__name__}"
+        BASIC_HELP += f"/{_each_command.__name__} "
         _output[_each_command.__name__.upper()] = {}
-        _output["BASIC"]["DESCRIPTION"] += '/' + _each_command.__name__
-        _output[_each_command.__name__.upper()]["NAME"] = _each_command.__name__
+        _output["BASIC"]["DESCRIPTION"] += '/' + _each_command.__name__ + " "
+        _output[_each_command.__name__.upper()]["NAME"] = "/" + _each_command.__name__
         _output[_each_command.__name__.upper()]["DESCRIPTION"] = _each_command.__doc__
 
     BASIC_HELP += "\n\n<b>Image Manipulation</b>\n"
     for _each_command in _image_commands:
-        BASIC_HELP += f"/{_each_command.__name__}"
-        _output["IMAGE"]["DESCRIPTION"] += '/' + _each_command.__name__
+        BASIC_HELP += f"/{_each_command.__name__} "
+        _output["IMAGE"]["DESCRIPTION"] += '/' + _each_command.__name__ + " "
         _output[_each_command.__name__.upper()] = {}
-        _output[_each_command.__name__.upper()]["NAME"] = _each_command.__name__
+        _output[_each_command.__name__.upper()]["NAME"] = "/" + _each_command.__name__
         _output[_each_command.__name__.upper()]["DESCRIPTION"] = _each_command.__doc__
 
     BASIC_HELP += "\n\n<b>Dev Commands (not for public usage)</b>\n"
     for _each_command in _dev_commands:
-        BASIC_HELP += f"/{_each_command.__name__}"
-        _output["DEV"]["DESCRIPTION"] += '/' + _each_command.__name__
+        BASIC_HELP += f"/{_each_command.__name__} "
+        _output["DEV"]["DESCRIPTION"] += '/' + _each_command.__name__ + " "
         _output[_each_command.__name__.upper()] = {}
-        _output[_each_command.__name__.upper()]["NAME"] = _each_command.__name__
+        _output[_each_command.__name__.upper()]["NAME"] = "/" + _each_command.__name__
         _output[_each_command.__name__.upper()]["DESCRIPTION"] = _each_command.__doc__
 
     ALL_HELP_REPLIES = _output
