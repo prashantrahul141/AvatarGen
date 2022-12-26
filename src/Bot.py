@@ -1,15 +1,22 @@
 # imports
 from os import getenv
 import telegram
-from telegram.ext import Application, CommandHandler, Defaults
+from telegram.ext import Application, CommandHandler
+from telegram.ext.filters import Chat
 from dotenv import load_dotenv
 from commands.basic_commands import alive
 from commands.image_commands import blur
-from commands.dev_commands import *
+from commands.dev_commands import test_getImage
 from commands.help_command import help_command_creator, help_command
 
 # loading envs
 load_dotenv()
+
+# devs ids
+_devs_id = []
+for i in range(int(getenv("TOTAL_DEVS"))):
+    _devs_id.append(int(getenv(f"DEV_ID_{i}")))
+DEVS = set(_devs_id)
 
 # Create the Application and pass it your bot's token.
 Bot = Application.builder().token(getenv("TOKEN")).build()
@@ -17,14 +24,15 @@ Bot = Application.builder().token(getenv("TOKEN")).build()
 # defining commands
 basic_commands = [alive]
 image_commands = [blur]
-dev_commands = []
+dev_commands = [test_getImage]
 
 
-all_commands = [CommandHandler(i.__name__, i) for i in [*basic_commands, *image_commands, *dev_commands]]
+all_commands = [CommandHandler(i.__name__, i) for i in [*basic_commands, *image_commands]]
 
 # setting up help command
 help_command_creator(basic_commands, image_commands, dev_commands)
 
 # adding to bot
-Bot.add_handlers(all_commands)
 Bot.add_handler(CommandHandler("help", help_command))
+Bot.add_handlers(all_commands)
+Bot.add_handlers([CommandHandler(i.__name__, i, filters=Chat(chat_id=DEVS)) for i in dev_commands])
