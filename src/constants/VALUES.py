@@ -1,6 +1,7 @@
 import os
 
 PHOTO_SIZE = -1
+DELETE_COROUTINE_TIME = 120
 
 # paths
 CONSTANTS_DIR = os.path.dirname(__file__)

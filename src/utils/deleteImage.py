@@ -1,5 +1,5 @@
 import os
-from constants.VALUES import USER_GIVEN_IMAGES_DIR
+from constants.VALUES import USER_GIVEN_IMAGES_DIR, DELETE_COROUTINE_TIME
 import time
 
 
@@ -13,7 +13,7 @@ async def deleteImageCoroutine(context) -> None:
         _file_path = os.path.join(USER_GIVEN_IMAGES_DIR, _file)
         try:
             _file_unix_timestamp = os.path.getmtime(_file_path)
-            if _current_unix_timestamp - _file_unix_timestamp > 120:
+            if _current_unix_timestamp - _file_unix_timestamp > DELETE_COROUTINE_TIME:
                 os.remove(_file_path)
 
         except Exception:

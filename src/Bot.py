@@ -9,6 +9,7 @@ from commands.image_commands import blur
 from commands.dev_commands import test_getImage
 from commands.help_command import help_command_creator, help_command
 from utils.deleteImage import deleteImageCoroutine
+from constants.VALUES import DELETE_COROUTINE_TIME
 
 # loading envs
 load_dotenv()
@@ -39,4 +40,4 @@ Bot.add_handlers(user_commands)
 Bot.add_handlers([CommandHandler(i.__name__, i, filters=Chat(chat_id=DEVS)) for i in dev_commands])
 
 # Job queues
-Bot.job_queue.run_repeating(deleteImageCoroutine, 120)
+Bot.job_queue.run_repeating(deleteImageCoroutine, DELETE_COROUTINE_TIME)
