@@ -174,3 +174,5 @@ assets/user_given_images/*
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+/.vscode
