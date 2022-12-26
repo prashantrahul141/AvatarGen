@@ -1,5 +1,7 @@
-from telegram import Update, PhotoSize
-from constants.VALUES import PHOTO_SIZE
+import uuid
+from os import path
+from telegram import Update, PhotoSize, File
+from constants.VALUES import PHOTO_SIZE, USER_GIVEN_IMAGES_DIR
 
 
 async def getImageObject(update: Update) -> PhotoSize | None:
@@ -33,6 +35,12 @@ async def getImageObject(update: Update) -> PhotoSize | None:
     return None
 
 
-async def getImage(update: Update):
-    _image_object = await getImageObject(update)
-    return _image_object
+async def getImage(update: Update) -> str | None:
+    _photo_size = await getImageObject(update)
+    if _photo_size != None:
+        _image_file: File or None = await _photo_size.get_file()
+        _file_path = path.join(USER_GIVEN_IMAGES_DIR, f"{uuid.uuid4().hex}.jpg")
+        await _image_file.download_to_drive(_file_path)
+        return _file_path
+
+    return None
