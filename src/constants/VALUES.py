@@ -1,4 +1,9 @@
 import os
+import logging
+
+
+# logging level
+LOGGING_LEVEL = logging.DEBUG
 
 PHOTO_SIZE = -1
 DELETE_COROUTINE_TIME = 120

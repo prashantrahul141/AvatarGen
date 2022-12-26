@@ -1,11 +1,11 @@
 import os
-from constants.VALUES import USER_GIVEN_IMAGES_DIR, EDITED_USER_GIVEN_IMAGES_DIR, DELETE_COROUTINE_TIME
+from constants.VALUES import USER_GIVEN_IMAGES_DIR, EDITED_USER_GIVEN_IMAGES_DIR, DELETE_COROUTINE_TIME, LOGGING_LEVEL
 import time
 import logging
 
 # Enable logging
 logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=LOGGING_LEVEL
 )
 logger = logging.getLogger(__name__)
 
