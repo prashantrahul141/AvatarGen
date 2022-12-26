@@ -1,8 +1,7 @@
 # imports
 from os import getenv
 import telegram
-from telegram.ext import Application, CommandHandler, ContextTypes
-
+from telegram.ext import Application, CommandHandler
 
 from telegram.ext.filters import Chat
 from dotenv import load_dotenv
@@ -30,8 +29,6 @@ Bot = Application.builder().token(getenv("TOKEN")).build()  # type: ignore
 basic_commands = [alive]
 image_commands = [blur]
 dev_commands = [test_getImage]
-
-
 user_commands = [CommandHandler(i.__name__, i) for i in [*basic_commands, *image_commands]]
 
 # setting up help command
