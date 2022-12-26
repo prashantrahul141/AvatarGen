@@ -2,7 +2,6 @@
 from os import getenv
 import telegram
 from telegram.ext import Application, CommandHandler
-
 from telegram.ext.filters import Chat
 from dotenv import load_dotenv
 from commands.basic_commands import alive
