@@ -161,6 +161,7 @@ cython_debug/
 
 # user generated images
 assets/user_given_images/*
+assets/edited_user_given_images/*
 
 .vscode/*
 !.vscode/settings.json
