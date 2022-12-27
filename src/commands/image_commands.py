@@ -1,7 +1,7 @@
 # imports
 from telegram import Update
 from telegram.ext import ContextTypes
-from .image_commands_impl import _blur, _pixelate, _emojioverlay, _deepfry, _caption1, _caption2, _cropcircle, _rotate
+from .image_commands_impl import _blur, _pixelate, _emojioverlay, _deepfry, _caption1, _caption2, _cropcircle, _rotate, _ascify
 
 
 async def blur(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
@@ -42,3 +42,8 @@ async def cropcircle(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 async def rotate(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     '''rotates the image.'''
     await _rotate._rotate(update, ctx)
+
+
+async def ascify(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    '''rotates the image.'''
+    await _ascify._ascify(update, ctx)
