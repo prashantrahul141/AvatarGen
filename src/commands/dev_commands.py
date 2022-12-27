@@ -14,3 +14,15 @@ async def test_getImage(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
             return
 
     await update.message.reply_text("None")
+
+
+async def test_deleteCoroutine(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
+    '''runs the delete coroutine.'''
+    _total_deleted = await deleteImageCoroutine(ctx)
+    await update.message.reply_text(f"{_total_deleted}")
+
+
+async def test_forcedeleteCoroutine(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
+    '''runs the delete coroutine.'''
+    _total_deleted = await deleteImageCoroutine(ctx, 0)
+    await update.message.reply_text(f"{_total_deleted}")
