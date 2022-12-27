@@ -1,7 +1,7 @@
 # imports
 from telegram import Update
 from telegram.ext import ContextTypes
-from .image_commands_impl import _blur, _pixelate
+from .image_commands_impl import _blur, _pixelate, _emojioverlay
 
 
 async def blur(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
@@ -10,5 +10,10 @@ async def blur(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
 
 async def pixelate(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    '''pixelates an images'''
+    '''pixelates an images.'''
     await _pixelate._pixelate(update, ctx)
+
+
+async def emojioverlay(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    '''overlays an emoji over an image.'''
+    await _emojioverlay._emojioverlay(update, ctx)
