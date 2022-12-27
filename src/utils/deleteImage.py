@@ -10,7 +10,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-async def deleteImageCoroutine(context) -> None:
+async def deleteImageCoroutine(context, _time: int = int(DELETE_COROUTINE_TIME/12)) -> int:
     # delete images coroutine
     # deletes images after a set amount of time they are created
 
@@ -21,21 +21,22 @@ async def deleteImageCoroutine(context) -> None:
         _file_path = os.path.join(USER_GIVEN_IMAGES_DIR, _file)
         try:
             _file_unix_timestamp = os.path.getmtime(_file_path)
-            if _current_unix_timestamp - _file_unix_timestamp > int(DELETE_COROUTINE_TIME/12):
+            if _current_unix_timestamp - _file_unix_timestamp > _time:
                 os.remove(_file_path)
                 _total_deleted += 1
 
         except Exception:
-            raise Exception
+            pass
 
         _file_path = os.path.join(EDITED_USER_GIVEN_IMAGES_DIR, _file)
         try:
             _file_unix_timestamp = os.path.getmtime(_file_path)
-            if _current_unix_timestamp - _file_unix_timestamp > int(DELETE_COROUTINE_TIME/12):
+            if _current_unix_timestamp - _file_unix_timestamp > _time:
                 os.remove(_file_path)
                 _total_deleted += 1
 
         except Exception:
-            raise Exception
+            pass
 
     logger.info(f"Deleted {_total_deleted} files.")
+    return _total_deleted
