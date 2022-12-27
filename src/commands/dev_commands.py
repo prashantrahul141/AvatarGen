@@ -24,5 +24,5 @@ async def test_deleteCoroutine(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -
 
 async def test_forcedeleteCoroutine(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     '''runs the delete coroutine.'''
-    _total_deleted = await deleteImageCoroutine(ctx, 0)
+    _total_deleted = await deleteImageCoroutine(ctx, True)
     await update.message.reply_text(f"{_total_deleted}")

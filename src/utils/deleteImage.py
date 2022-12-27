@@ -10,7 +10,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-async def deleteImageCoroutine(context, _time: int = int(DELETE_COROUTINE_TIME/12)) -> int:
+async def deleteImageCoroutine(context,  _force: bool = False) -> int:
     # delete images coroutine
     # deletes images after a set amount of time they are created
 
@@ -21,7 +21,7 @@ async def deleteImageCoroutine(context, _time: int = int(DELETE_COROUTINE_TIME/1
         _file_path = os.path.join(USER_GIVEN_IMAGES_DIR, _file)
         try:
             _file_unix_timestamp = os.path.getmtime(_file_path)
-            if _current_unix_timestamp - _file_unix_timestamp > _time:
+            if _current_unix_timestamp - _file_unix_timestamp > DELETE_COROUTINE_TIME/12 or _force:
                 os.remove(_file_path)
                 _total_deleted += 1
 
@@ -31,7 +31,7 @@ async def deleteImageCoroutine(context, _time: int = int(DELETE_COROUTINE_TIME/1
         _file_path = os.path.join(EDITED_USER_GIVEN_IMAGES_DIR, _file)
         try:
             _file_unix_timestamp = os.path.getmtime(_file_path)
-            if _current_unix_timestamp - _file_unix_timestamp > _time:
+            if _current_unix_timestamp - _file_unix_timestamp > DELETE_COROUTINE_TIME/12 or _force:
                 os.remove(_file_path)
                 _total_deleted += 1
 
