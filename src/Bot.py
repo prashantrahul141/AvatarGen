@@ -25,8 +25,8 @@ DEVS = set(_devs_id)
 Bot = Application.builder().token(getenv("TOKEN")).build()  # type: ignore
 
 # defining commands
-basic_commands = [alive, pixelate]
-image_commands = [blur]
+basic_commands = [alive]
+image_commands = [blur, pixelate]
 dev_commands = [test_getImage]
 user_commands = [CommandHandler(i.__name__, i) for i in [*basic_commands, *image_commands]]
 
