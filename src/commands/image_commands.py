@@ -1,7 +1,7 @@
 # imports
 from telegram import Update
 from telegram.ext import ContextTypes
-from .image_commands_impl import _blur, _pixelate, _emojioverlay, _deepfry
+from .image_commands_impl import _blur, _pixelate, _emojioverlay, _deepfry, _caption1, _caption2
 
 
 async def blur(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
@@ -22,3 +22,13 @@ async def emojioverlay(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 async def deepfry(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     '''make deepfry meme from an image.'''
     await _deepfry._deepfry(update, ctx)
+
+
+async def caption1(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    '''adds captions to the upper part of the image.'''
+    await _caption1._caption1(update, ctx)
+
+
+async def caption2(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    '''adds captions to the upper part of the image.'''
+    await _caption2._caption2(update, ctx)
