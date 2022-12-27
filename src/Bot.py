@@ -5,7 +5,7 @@ from telegram.ext import Application, CommandHandler
 from telegram.ext.filters import Chat
 from dotenv import load_dotenv
 from commands.basic_commands import alive
-from commands.image_commands import blur, pixelate
+from commands.image_commands import blur, pixelate, emojioverlay
 from commands.dev_commands import test_getImage
 from commands.help_command import help_command_creator, help_command
 from utils.deleteImage import deleteImageCoroutine
@@ -26,7 +26,7 @@ Bot = Application.builder().token(getenv("TOKEN")).build()  # type: ignore
 
 # defining commands
 basic_commands = [alive]
-image_commands = [blur, pixelate]
+image_commands = [blur, pixelate, emojioverlay]
 dev_commands = [test_getImage]
 user_commands = [CommandHandler(i.__name__, i) for i in [*basic_commands, *image_commands]]
 
