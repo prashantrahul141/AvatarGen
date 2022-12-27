@@ -1,7 +1,7 @@
 # imports
 from telegram import Update
 from telegram.ext import ContextTypes
-from .image_commands_impl import _blur, _pixelate, _emojioverlay, _deepfry, _caption1, _caption2
+from .image_commands_impl import _blur, _pixelate, _emojioverlay, _deepfry, _caption1, _caption2, _cropcircle, _rotate
 
 
 async def blur(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
@@ -30,5 +30,15 @@ async def caption1(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
 
 async def caption2(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    '''adds captions to the upper part of the image.'''
+    '''adds captions to the bottom part of the image.'''
     await _caption2._caption2(update, ctx)
+
+
+async def cropcircle(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    '''crops image in a circle.'''
+    await _cropcircle._cropcircle(update, ctx)
+
+
+async def rotate(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    '''rotates the image.'''
+    await _rotate._rotate(update, ctx)
