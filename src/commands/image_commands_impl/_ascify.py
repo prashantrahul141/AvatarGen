@@ -3,7 +3,7 @@ from telegram.ext import ContextTypes
 from utils.EC import EC
 
 
-# Blur commands
+# Ascify commands
 async def _ascify(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     if ctx.args and len(ctx.args) > 0:
         _text = " ".join(ctx.args)

@@ -6,7 +6,7 @@ from utils.EC import EC
 from constants.VALUES import EDITED_USER_GIVEN_IMAGES_DIR
 
 
-# Blur commands
+# CropCircle commands
 async def _cropcircle(update: Update, context: ContextTypes.DEFAULT_TYPE):
     _image_path, _image_name = await getImage(update)
 

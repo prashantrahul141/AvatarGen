@@ -6,7 +6,7 @@ from utils.EC import EC
 from constants.VALUES import EDITED_USER_GIVEN_IMAGES_DIR
 
 
-# Blur commands
+# Deepfry commands
 async def _deepfry(update: Update, context: ContextTypes.DEFAULT_TYPE):
     _image_path, _image_name = await getImage(update)
 
