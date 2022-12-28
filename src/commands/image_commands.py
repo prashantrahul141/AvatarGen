@@ -2,7 +2,7 @@
 from telegram import Update
 from telegram.ext import ContextTypes
 from .image_commands_impl import _blur, _pixelate, _emojioverlay, _deepfry, _caption1, _caption2, _cropcircle
-from .image_commands_impl import _rotate, _ascify, _crop, _saturate, _grayscale
+from .image_commands_impl import _rotate, _ascify, _crop, _saturate, _grayscale, _flip
 
 
 async def blur(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
@@ -63,3 +63,8 @@ async def saturate(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 async def grayscale(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     '''grayscales an image.'''
     await _grayscale._grayscale(update, ctx)
+
+
+async def flip(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    '''flips an image vertically.'''
+    await _flip._flip(update, ctx)
