@@ -2,7 +2,7 @@
 from telegram import Update
 from telegram.ext import ContextTypes
 from .image_commands_impl import _blur, _pixelate, _emojioverlay, _deepfry, _caption1, _caption2, _cropcircle
-from .image_commands_impl import _rotate, _ascify, _crop, _saturate, _grayscale, _flip, _mirror
+from .image_commands_impl import _rotate, _ascify, _crop, _saturate, _grayscale, _flip, _mirror, _invert
 
 
 async def blur(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
@@ -73,3 +73,8 @@ async def flip(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 async def mirror(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     '''mirrors' an image vertically.'''
     await _mirror._mirror(update, ctx)
+
+
+async def invert(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    '''mirrors' an image vertically.'''
+    await _invert._invert(update, ctx)
