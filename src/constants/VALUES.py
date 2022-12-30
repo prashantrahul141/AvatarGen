@@ -3,7 +3,7 @@ import logging
 
 
 # logging level
-LOGGING_LEVEL = logging.DEBUG
+LOGGING_LEVEL = logging.ERROR
 
 PHOTO_SIZE = -1
 DELETE_COROUTINE_TIME = 120
