@@ -3,7 +3,7 @@ from telegram import Update
 from telegram.ext import ContextTypes
 from utils.getImage import getImage
 from utils.EC import EC
-from constants.VALUES import EDITED_USER_GIVEN_IMAGES_DIR
+from constants.VALUES import EDITED_USER_GIVEN_IMAGES_DIR, FONT_SIZE_MUL
 
 
 # Caption1 commands
@@ -17,7 +17,7 @@ async def _caption1(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
         new_path = os.path.join(EDITED_USER_GIVEN_IMAGES_DIR, _image_name.split('.')[0])
 
-        EC.caption1(_image_path, _text).save(f"{new_path}.jpg")
+        EC.caption1(_image_path, _text, FONT_SIZE_MUL).save(f"{new_path}.jpg")
         await update.message.reply_photo(f"{new_path}.jpg")
 
     else:
