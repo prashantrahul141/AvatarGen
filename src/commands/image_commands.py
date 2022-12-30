@@ -12,20 +12,20 @@ async def blur(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
 async def pixelate(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     '''
-    pixelates an images.
-    usage:
-        /pixelate {scale}
-    scale: between 0 and 6 (including)
+pixelates an images.
+usage:
+/pixelate {scale}
+scale: between 0 and 6 (including)
     '''
     await _pixelate._pixelate(update, ctx)
 
 
 async def emojioverlay(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     '''
-    overlays an emoji over an image.
-    usage:
-        /emojioverlay {emoji}
-    emoji: any native emoji.
+overlays an emoji over an image.
+usage:
+/emojioverlay {emoji}
+emoji: any native emoji.
     '''
     await _emojioverlay._emojioverlay(update, ctx)
 
@@ -37,19 +37,19 @@ async def deepfry(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
 async def caption1(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     '''
-    adds captions to the upper part of the image.
-    usage:
-        /caption1 {text here}
-    '''
+adds captions to the upper part of the image.
+usage:
+/caption1 {text here}
+'''
     await _caption1._caption1(update, ctx)
 
 
 async def caption2(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     '''
-    adds captions to the bottom part of the image.
-    usage:
-        /caption1 {text here}
-    '''
+adds captions to the bottom part of the image.
+usage:
+/caption1 {text here}
+'''
     await _caption2._caption2(update, ctx)
 
 
@@ -60,20 +60,20 @@ async def cropcircle(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
 async def rotate(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     '''
-    rotates the image.
-    usage:
-        /rotate {angle}
-    angle: in angles
+rotates the image.
+usage:
+/rotate {angle}
+angle: in angles
     '''
     await _rotate._rotate(update, ctx)
 
 
 async def ascify(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     '''
-    create ascii art from text.
-    usage:
-     /ascify {text}
-    '''
+create ascii art from text.
+usage:
+/ascify {text}
+'''
     await _ascify._ascify(update, ctx)
 
 
@@ -84,10 +84,10 @@ async def crop(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
 async def saturate(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     '''
-    change saturation of an image.
-    usage:
-        /saturate {scale}
-    scale: between 0 - 10 (including)
+change saturation of an image.
+usage:
+/saturate {scale}
+scale: between 0 - 10 (including)
     '''
     await _saturate._saturate(update, ctx)
 
