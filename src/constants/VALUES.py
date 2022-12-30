@@ -5,6 +5,11 @@ import logging
 # logging level
 LOGGING_LEVEL = logging.ERROR
 
+
+# Time outs
+READ_TIMEOUT = 30
+WRITE_TIMEOUT = 30
+
 PHOTO_SIZE = -1
 DELETE_COROUTINE_TIME = 120
 

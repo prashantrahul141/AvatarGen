@@ -10,7 +10,7 @@ from commands.image_commands import rotate, ascify, crop, saturate, grayscale, f
 from commands.dev_commands import test_getImage, test_deleteCoroutine, test_forcedeleteCoroutine, create_commandlist, get_commandList
 from commands.help_command import help_command_creator, help_command
 from utils.deleteImage import deleteImageCoroutine
-from constants.VALUES import DELETE_COROUTINE_TIME
+from constants.VALUES import DELETE_COROUTINE_TIME, READ_TIMEOUT, WRITE_TIMEOUT
 
 # loading envs
 load_dotenv()
@@ -23,7 +23,7 @@ for i in range(int(getenv("TOTAL_DEVS"))):  # type: ignore
 DEVS = set(_devs_id)
 
 # Create the Application and pass it your bot's token.
-Bot = Application.builder().token(getenv("TOKEN")).build()  # type: ignore
+Bot = Application.builder().token(getenv("TOKEN")).read_timeout(READ_TIMEOUT).write_timeout(WRITE_TIMEOUT).build()  # type: ignore
 
 # defining commands
 basic_commands = [alive]
