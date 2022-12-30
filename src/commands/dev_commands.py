@@ -4,7 +4,7 @@ from telegram.ext import ContextTypes
 from utils.getImage import getImage
 from utils.deleteImage import deleteImageCoroutine
 
-COMMAND_LIST = "help - get help on how to use bot"
+COMMAND_LIST = "help - get help on how to use bot\n"
 
 
 async def test_getImage(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
