@@ -21,17 +21,19 @@ async def deleteImageCoroutine(context,  _force: bool = False) -> int:
         _file_path = os.path.join(USER_GIVEN_IMAGES_DIR, _file)
         try:
             _file_unix_timestamp = os.path.getmtime(_file_path)
-            if _current_unix_timestamp - _file_unix_timestamp > DELETE_COROUTINE_TIME/12 or _force and _file != '.local':
+            if (_current_unix_timestamp - _file_unix_timestamp > DELETE_COROUTINE_TIME/12 or _force) and _file != '.local':
                 os.remove(_file_path)
                 _total_deleted += 1
 
         except Exception:
             pass
 
+    _files = os.listdir(EDITED_USER_GIVEN_IMAGES_DIR)
+    for _file in _files:
         _file_path = os.path.join(EDITED_USER_GIVEN_IMAGES_DIR, _file)
         try:
             _file_unix_timestamp = os.path.getmtime(_file_path)
-            if _current_unix_timestamp - _file_unix_timestamp > DELETE_COROUTINE_TIME/12 or _force and _file != '.local':
+            if (_current_unix_timestamp - _file_unix_timestamp > DELETE_COROUTINE_TIME/12 or _force) and _file != '.local':
                 os.remove(_file_path)
                 _total_deleted += 1
 
