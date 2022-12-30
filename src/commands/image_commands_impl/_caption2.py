@@ -14,7 +14,6 @@ async def _caption2(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
         _text = 'text here'
         if ctx.args and len(ctx.args) > 0:
             _text = " ".join(ctx.args)
-            print(_text)
 
         new_path = os.path.join(EDITED_USER_GIVEN_IMAGES_DIR, _image_name.split('.')[0])
 
