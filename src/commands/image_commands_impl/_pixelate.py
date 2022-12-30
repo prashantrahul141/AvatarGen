@@ -15,8 +15,8 @@ async def _pixelate(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if context.args and len(context.args) > 0:
             try:
                 _pixelate_intensity = int(context.args[0])
-                if _pixelate_intensity > 6:
-                    _pixelate_intensity = 10
+                if _pixelate_intensity >= 6:
+                    _pixelate_intensity = 6
                 elif _pixelate_intensity <= 0:
                     _pixelate_intensity = 0
             except Exception:
