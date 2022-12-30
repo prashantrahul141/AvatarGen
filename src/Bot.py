@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from commands.basic_commands import alive
 from commands.image_commands import blur, pixelate, emojioverlay, deepfry, caption1, caption2, cropcircle
 from commands.image_commands import rotate, ascify, crop, saturate, grayscale, flip, mirror, invert
-from commands.dev_commands import test_getImage, test_deleteCoroutine, test_forcedeleteCoroutine
+from commands.dev_commands import test_getImage, test_deleteCoroutine, test_forcedeleteCoroutine, create_commandlist, get_commandList
 from commands.help_command import help_command_creator, help_command
 from utils.deleteImage import deleteImageCoroutine
 from constants.VALUES import DELETE_COROUTINE_TIME
@@ -29,11 +29,14 @@ Bot = Application.builder().token(getenv("TOKEN")).build()  # type: ignore
 basic_commands = [alive]
 image_commands = [blur, pixelate, emojioverlay, deepfry, caption1, caption2,
                   cropcircle, rotate, ascify, crop, saturate, grayscale, flip, mirror, invert]
-dev_commands = [test_getImage, test_deleteCoroutine, test_forcedeleteCoroutine]
+dev_commands = [test_getImage, test_deleteCoroutine, test_forcedeleteCoroutine, get_commandList]
 user_commands = [CommandHandler(i.__name__, i) for i in [*basic_commands, *image_commands]]
 
 # setting up help command
 help_command_creator(basic_commands, image_commands, dev_commands)
+
+# setting up get_commandlist command
+create_commandlist(image_commands)
 
 # adding to bot
 Bot.add_handler(CommandHandler("help", help_command))

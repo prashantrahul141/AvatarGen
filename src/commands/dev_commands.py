@@ -4,6 +4,8 @@ from telegram.ext import ContextTypes
 from utils.getImage import getImage
 from utils.deleteImage import deleteImageCoroutine
 
+COMMAND_LIST = "help - get help on how to use bot"
+
 
 async def test_getImage(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     '''To test getImage utils function.'''
@@ -26,3 +28,16 @@ async def test_forcedeleteCoroutine(update: Update, ctx: ContextTypes.DEFAULT_TY
     '''runs the delete coroutine.'''
     _total_deleted = await deleteImageCoroutine(ctx, True)
     await update.message.reply_text(f"{_total_deleted}")
+
+
+def create_commandlist(command_list: list) -> None:
+    '''creates a command list for get_commandList func.'''
+    global COMMAND_LIST
+    for _each_command in command_list:
+        COMMAND_LIST += f"{_each_command.__name__} - {_each_command.__doc__}\n"
+
+
+async def get_commandList(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
+    '''returns a commmand list which can be used through t.m/BotFather'''
+    global COMMAND_LIST
+    await update.message.reply_text(COMMAND_LIST)
