@@ -1,7 +1,7 @@
 # imports
-import logging
-from Bot import Bot
 from constants.VALUES import LOGGING_LEVEL
+import logging
+
 
 # Enable logging
 logging.basicConfig(
@@ -9,6 +9,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# creating and setting up bot
+from Bot import Bot  # noqa
 
 # running bot
+print("Starting up bot.")
 Bot.run_polling()
