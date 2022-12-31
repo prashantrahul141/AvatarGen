@@ -6,7 +6,7 @@ from telegram.ext.filters import Chat
 from dotenv import load_dotenv
 from commands.basic_commands import alive, start, github
 from commands.image_commands import blur, pixelate, emojioverlay, deepfry, caption1, caption2, cropcircle
-from commands.image_commands import rotate, ascify, crop, saturate, grayscale, flip, mirror, invert
+from commands.image_commands import rotate, ascify, crop, saturate, grayscale, flip, mirror, invert, triggered
 from commands.dev_commands import test_getImage, test_deleteCoroutine, test_forcedeleteCoroutine, create_commandlist, get_commandList
 from commands.help_command import help_command_creator, help_command
 from utils.deleteImage import deleteImageCoroutine
@@ -35,8 +35,8 @@ Bot = Application.builder().token(getenv("TOKEN")).read_timeout(READ_TIMEOUT).wr
 
 # defining commands
 basic_commands = [alive, start, github]
-image_commands = [blur, pixelate, emojioverlay, deepfry, caption1, caption2,
-                  cropcircle, rotate, ascify, crop, saturate, grayscale, flip, mirror, invert]
+image_commands = [blur, pixelate, emojioverlay, deepfry, caption1, caption2,  cropcircle, rotate,
+                  ascify, crop, saturate, grayscale, flip, mirror, invert, triggered]
 dev_commands = [test_getImage, test_deleteCoroutine, test_forcedeleteCoroutine, get_commandList]
 user_commands = [CommandHandler(i.__name__, i) for i in [*basic_commands, *image_commands]]
 

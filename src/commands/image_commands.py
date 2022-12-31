@@ -2,7 +2,7 @@
 from telegram import Update
 from telegram.ext import ContextTypes
 from .image_commands_impl import _blur, _pixelate, _emojioverlay, _deepfry, _caption1, _caption2, _cropcircle
-from .image_commands_impl import _rotate, _ascify, _crop, _saturate, _grayscale, _flip, _mirror, _invert
+from .image_commands_impl import _rotate, _ascify, _crop, _saturate, _grayscale, _flip, _mirror, _invert, _triggered
 
 
 async def blur(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
@@ -101,5 +101,10 @@ async def mirror(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
 
 async def invert(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    '''inverts the colors on an image..'''
+    '''inverts the colors on an image.'''
     await _invert._invert(update, ctx)
+
+
+async def triggered(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    '''make triggered meme from an image.'''
+    await _triggered._triggered(update, ctx)
