@@ -1,4 +1,4 @@
-Pillow>=9.3.0
+ImageEffects>=0.0.9
 python-telegram-bot==20.0b0
 python-telegram-bot[job-queue]
 python-dotenv>=0.21.0
