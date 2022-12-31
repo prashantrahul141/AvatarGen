@@ -16,11 +16,19 @@ from constants.VALUES import DELETE_COROUTINE_TIME, READ_TIMEOUT, WRITE_TIMEOUT
 load_dotenv()
 
 # devs ids
-_devs_id = []
+_devs_ids = []
 
-for i in range(int(getenv("TOTAL_DEVS"))):  # type: ignore
-    _devs_id.append(int(getenv(f"DEV_ID_{i}")))  # type: ignore
-DEVS = set(_devs_id)
+_get_devs = True
+_dev_number = 0
+while _get_devs:
+    _dev_id = getenv(f"DEV_ID_{_dev_number}")  # type: ignore
+    _dev_number += 1
+    if _dev_id != None:
+        _devs_ids.append(int(_dev_id))
+    else:
+        break
+
+DEVS = set(_devs_ids)
 
 # Create the Application and pass it your bot's token.
 Bot = Application.builder().token(getenv("TOKEN")).read_timeout(READ_TIMEOUT).write_timeout(WRITE_TIMEOUT).build()  # type: ignore
