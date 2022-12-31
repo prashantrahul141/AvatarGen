@@ -9,7 +9,7 @@ COMMAND_LIST = "help - get help on how to use bot\n"
 
 async def test_getImage(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
     '''To test getImage utils function.'''
-    _file_path, _file_path = await getImage(update)
+    _file_path, _file_name = await getImage(update)
     if _file_path != None:
         with open(_file_path, 'rb') as f:
             await update.message.reply_photo(f)
