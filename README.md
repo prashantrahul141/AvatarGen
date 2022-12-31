@@ -10,16 +10,19 @@
 
 My instance (might not be up): <a href='https://t.me/AvatarGen_bot'>@AvatarGen_bot</a>
 
-<br>
-
 Telegram bot which does image manipulation on the fly on users' commands. At the back it uses <a href='https://github.com/prashantrahul141/ImageEffects'>prashantrahul141/<b>ImageEffects</b></a> library. Type <a href='https://t.me/AvatarGen_bot?start=help'>/help </a> for help.
 
-<br>
 <h3> Hosting your own instance </h3>
 
 1. Create a telegram bot using <a href='https://t.me/BotFather'>@BotFather</a> and get its TOKEN.
 
-2. Put these in .env
+2. Clone the repo
+
+```sh
+git clone https://github.com/prashantrahul141/AvatarGen
+```
+
+3. Put these in .env
 
 ```sh
 TOKEN=YOUR BOT TOKEN
@@ -27,13 +30,13 @@ TOKEN=YOUR BOT TOKEN
 # DEV_ID_1=Each dev ids ( Telegram user id ) # Optional
 ```
 
-3. Install dependencies
+4. Install dependencies
 
 ```sh
 pip install -r requirements.txt
 ```
 
-4. Run `main.py`
+5. Run `main.py`
 
 ```sh
 python main.py
