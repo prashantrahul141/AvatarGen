@@ -4,7 +4,7 @@ import telegram
 from telegram.ext import Application, CommandHandler
 from telegram.ext.filters import Chat
 from dotenv import load_dotenv
-from commands.basic_commands import alive, start
+from commands.basic_commands import alive, start, github
 from commands.image_commands import blur, pixelate, emojioverlay, deepfry, caption1, caption2, cropcircle
 from commands.image_commands import rotate, ascify, crop, saturate, grayscale, flip, mirror, invert
 from commands.dev_commands import test_getImage, test_deleteCoroutine, test_forcedeleteCoroutine, create_commandlist, get_commandList
@@ -34,7 +34,7 @@ DEVS = set(_devs_ids)
 Bot = Application.builder().token(getenv("TOKEN")).read_timeout(READ_TIMEOUT).write_timeout(WRITE_TIMEOUT).build()  # type: ignore
 
 # defining commands
-basic_commands = [alive, start]
+basic_commands = [alive, start, github]
 image_commands = [blur, pixelate, emojioverlay, deepfry, caption1, caption2,
                   cropcircle, rotate, ascify, crop, saturate, grayscale, flip, mirror, invert]
 dev_commands = [test_getImage, test_deleteCoroutine, test_forcedeleteCoroutine, get_commandList]

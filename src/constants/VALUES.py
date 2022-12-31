@@ -5,6 +5,8 @@ import logging
 # logging level
 LOGGING_LEVEL = logging.ERROR
 
+# Github url
+GITHUB_URL = 'https://github.com/prashantrahul141/AvatarGen'
 
 # Time outs
 READ_TIMEOUT = 30
