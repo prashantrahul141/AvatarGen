@@ -3,7 +3,8 @@ from telegram import Update
 from telegram.ext import ContextTypes
 
 ALL_HELP_REPLIES = {}
-BASIC_HELP = ''
+BASIC_HELP = '''You can use commands directly to edit your profile picture, or you can reply to someone else\'s \
+message to edit their profile picture, or you can reply to a message with photos (only) to edit the photo.\n\n'''
 
 
 async def help_command(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
@@ -57,4 +58,5 @@ def help_command_creator(_basic_commands: list, _image_commands: list, _dev_comm
         _output[_each_command.__name__.upper()]["NAME"] = "/" + _each_command.__name__
         _output[_each_command.__name__.upper()]["DESCRIPTION"] = _each_command.__doc__
 
+    BASIC_HELP += '\n\nYou can use /help {command name / category name} to get info about a particular command or category.'
     ALL_HELP_REPLIES = _output
