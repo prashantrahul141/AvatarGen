@@ -1,14 +1,28 @@
 # imports
+
+# buitins
 from os import getenv
-import telegram
+
+# foreign packages
 from telegram.ext import Application, CommandHandler
 from telegram.ext.filters import Chat
 from dotenv import load_dotenv
+
+# local packages
+# basic commands
 from commands.basic_commands import alive, start, github
+
+# image commands
 from commands.image_commands import blur, pixelate, emojioverlay, deepfry, caption1, caption2, cropcircle
 from commands.image_commands import rotate, ascify, crop, saturate, grayscale, flip, mirror, invert, triggered
+
+# dev commands
 from commands.dev_commands import test_getImage, test_deleteCoroutine, test_forcedeleteCoroutine, create_commandlist, get_commandList
+
+# help commands
 from commands.help_command import help_command_creator, help_command
+
+# other local stuff
 from utils.deleteImage import deleteImageCoroutine
 from constants.VALUES import DELETE_COROUTINE_TIME, READ_TIMEOUT, WRITE_TIMEOUT
 
