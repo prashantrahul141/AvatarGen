@@ -17,7 +17,7 @@ async def _caption2(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
         new_path = os.path.join(EDITED_USER_GIVEN_IMAGES_DIR, _image_name.split('.')[0])
 
-        EC.caption2(_image_path, _text, FONT_SIZE_MUL).save(f"{new_path}.jpg")
+        EC.caption2(_image_path, _text, FONT_SIZE_MUL, True).save(f"{new_path}.jpg")
         await update.message.reply_photo(f"{new_path}.jpg")
 
     else:
