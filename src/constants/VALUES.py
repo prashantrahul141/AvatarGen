@@ -1,6 +1,8 @@
 import os
 import logging
 
+# if running as background process
+RUNNING_IN_BACKGROUND = False
 
 # logging level
 LOGGING_LEVEL = logging.ERROR
